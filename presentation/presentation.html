@@ -13,16 +13,19 @@
 
 
     <jbd-service url="{{ location }}" slides="{{ slides }}"></jbd-service>
-  <h2>Currentslide {{ currentSlide}}</h2>
-    <template repeat="{{ slide in slides }}">
-      <jbd-slide hidden?="{{ currentSlide !== slide.id}}">
-        <h2>{{slide.title}}</h2>
-        <template if="{{slide.img}}">
-          <img src="./images/{{slide.img}}">
-        </template>
-        <p>{{slide.content}}</p>
-      </jbd-slide>
-    </template>
+
+    <div class="container">
+      <template repeat="{{ slide in slides }}">
+        <jbd-slide hidden?="{{ currentSlide !== slide.id}}">
+          <h2>{{slide.title}}</h2>
+          <template if="{{slide.img}}">
+            <img src="./images/{{slide.img}}">
+          </template>
+          <p>{{slide.content}}</p>
+        </jbd-slide>
+      </template>
+    </div>
+
 
     <control-bar on-next="{{nextSlide}}"
                  on-previous="{{previousSlide}}"></control-bar>
