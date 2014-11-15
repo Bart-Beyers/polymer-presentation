@@ -1,7 +1,7 @@
 <link rel="import" href="../bower_components/polymer/polymer.html">
-<link rel="import" href="../bower_components/core-icon-button/core-icon-button.html">
+<link rel="import" href="../bower_components/paper-icon-button/paper-icon-button.html">
 
-<polymer-element name="control-bar">
+<polymer-element name="control-bar" attributes="previousDisabled nextDisabled">
     <template>
         <style>
             :host {
@@ -14,29 +14,24 @@
                 font-weight: 300;
                 bottom: 0;
             }
-            core-icon-button {
+            paper-icon-button {
               color: #636363;
-            }
-            #previous {
-              right: 50px;
-              padding: 10px;
-            }
-            #next {
-              right: 30px;
-              padding: 10px;
+              padding-top: 15px;
             }
         </style>
-        <div>
-            <core-icon-button
+        <div layout horizontal center>
+            <paper-icon-button
                 id="previous"
                 icon="arrow-back"
-                on-tap="{{previousTapped}}">
-            </core-icon-button>
-            <core-icon-button
+                on-tap="{{previousTapped}}"
+                disabled?="{{ previousDisabled }}">
+            </paper-icon-button>
+            <paper-icon-button
                 id="next"
                 icon="arrow-forward"
-                on-tap="{{nextTapped}}">
-            </core-icon-button>
+                on-tap="{{nextTapped}}"
+                disabled?="{{nextDisabled}}">
+            </paper-icon-button>
         </div>
         <content></content>
     </template>
@@ -53,6 +48,8 @@
             console.log('next slide');
         }, ready: function () {
           console.log('pres ready');
+          this.previousDisabled = true;
+          this.nextDisabled = false;
         }
     });
     </script>
