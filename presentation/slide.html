@@ -7,10 +7,7 @@
   <template>
     <style>
     :host {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 90%;
+      width: 40%;
       margin: 5%;
     }
 
@@ -21,25 +18,27 @@
 
     .slide-header ::content h2{
       margin: 0;
+      padding-top: 40px;
       font-size: 1.8rem;
       font-weight: 300;
     }
     .slide ::content img{
-      width: 30%;
       border-radius: 5%;
-      margin: 10px;
+      margin: 20px;
+      width: 500px;
     }
     </style>
 
     <paper-shadow z="1">
-      <div>
-
-        <h1>This is a slide</h1>
-        <div class="slide-header" center>
+      <div layout vertical center>
+        <div class="slide-header">
           <content select="h2"></content>
         </div>
-        <div class="slide" layout horizontal>
-          <content select="img"></content>
+        <div class="slide" layout horizontal top>
+          <div>
+            <content select="img"></content>
+          </div>
+
           <content select="h4"></content>
           <content></content>
         </div>
