@@ -1,0 +1,37 @@
+<link rel="import"
+      href="../bower_components/polymer/polymer.html">
+
+<polymer-element name="jbd-slide">
+  <template>
+    <style>
+    :host {
+      background-color: #000000;
+    }
+    .slide-header ::content h2{
+      margin: 0;
+      font-size: 1.8rem;
+      font-weight: 300;
+    }
+    .slide ::content img{
+      width: 30%;
+      border-radius: 5%;
+      margin: 10px;
+    }
+    </style>
+    <div>
+      <h1>This is a slide</h1>
+      <div class="slide-header">
+        <content select="h2"></content>
+      </div>
+      <div class="slide" layout horizontal center>
+        <content select="img"></content>
+        <content></content>
+      </div>
+    </div>
+  </template>
+  <script>
+  Polymer({
+    // define the element's JavaScript prototype here
+  });
+  </script>
+</polymer-element>

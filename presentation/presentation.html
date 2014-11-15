@@ -1,0 +1,22 @@
+<link rel="import" href="../bower_components/polymer/polymer.html">
+<link rel="import" href="slide.html">
+<polymer-element name="jbd-presentation"  attributes="location">
+  <template>
+    <style>
+    :host {
+      background-color: #999999;
+    }
+    </style>
+
+    <h1>This is a presentation at {{location}}</h1>
+    <jbd-slide>
+      <h2>This is the slide title</h2>
+      <p>This is the contents of the slide</p>
+      <img src="../images/images.jpg" alt="shizzle">
+    </jbd-slide>
+  </template>
+  <script>
+  Polymer({
+  });
+  </script>
+</polymer-element>
