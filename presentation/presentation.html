@@ -27,21 +27,27 @@
     </div>
 
 
-    <control-bar on-next="{{nextSlide}}"
+    <control-bar previousDisabled="{{!hasPrevious}}" nextDisabled="{{!hasNext}}" on-next="{{nextSlide}}"
                  on-previous="{{previousSlide}}"></control-bar>
   </template>
   <script>
   Polymer({
     currentSlide: 0,
+    hasPrevious: false,
+    hasNext: true,
     nextSlide: function (event, detail, sender){
       if (this.currentSlide !== this.slides.length -1){
         this.currentSlide += 1;
       }
+      this.hasNext = this.currentSlide !== (this.slides.length - 1);
+      this.hasPrevious = this.currentSlide !== 0;
     },
     previousSlide: function () {
       if (this.currentSlide !== 0){
         this.currentSlide -= 1;
       }
+      this.hasNext = this.currentSlide !== this.slides.length -1;
+      this.hasPrevious = this.currentSlide !== 0;
     }
   });
   </script>
