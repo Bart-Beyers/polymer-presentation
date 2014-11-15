@@ -8,6 +8,12 @@
     "title": "Another slide",
     "content": "Testing",
     "img": "cat.jpg",
-    "id": 1
+    "id": 1,
+    "content": "Hellooooo"
+  },
+  {
+    "title": "Hello world2",
+    "content": "Hellooooo2",
+    "id": 2
   }
 ]
