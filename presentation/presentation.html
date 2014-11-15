@@ -1,4 +1,5 @@
 <link rel="import" href="../bower_components/polymer/polymer.html">
+<link rel="import" href="../bower_components/core-pages/core-pages.html">
 <link rel="import" href="slide.html">
 <link rel="import" href="../service/service.html">
 <link rel="import" href="control-bar.html">
@@ -10,23 +11,78 @@
     :host {
       background-color: #999999;
     }
+
+    core-pages {
+      width: 70%;
+    }
+
+    core-pages.fancy {
+      border: none;
+      margin-left: 2em;
+    }
+
+    core-pages.fancy > div {
+      opacity: 0;
+      -webkit-transform: translate3d(-100px, 0, 0) scale(0.9);
+      transform: translate3d(-100px, 0, 0) scale(0.9);
+      transition: all .3s cubic-bezier(.03,.56,.7,.98);
+    }
+
+    core-pages.fancy > .one {
+      background-color: red;
+    }
+
+    core-pages.fancy > .two {
+      background-color: green;
+    }
+
+    core-pages.fancy > .three {
+      background-color: blue;
+    }
+
+    core-pages.fancy > .four {
+      background-color: purple;
+    }
+
+    core-pages.fancy > .five {
+      background-color: black;
+    }
+
+    core-pages.fancy .core-selected + div {
+      -webkit-transform: translate3d(100px, 0, 0) scale(0.9);
+      transform: translate3d(100px, 0, 0) scale(1);
+    }
+
+    core-pages.fancy .core-selected {
+      opacity: 1;
+      -webkit-transform: translateX(0);
+      transform: translateX(0);
+    }
+
+    core-pages.fancy div.begin {
+      -webkit-transform: translate3d(100px, 0, 0) scale(0.9);
+      transform: translate3d(100px, 0, 0) scale(0.9);
+    }
+
     </style>
 
 
     <jbd-service url="{{ location }}" slides="{{ slides }}"></jbd-service>
 
-    <div class="container">
+    <core-pages class="fancy" animate selected="{{currentSlide}}">
       <template repeat="{{ slide in slides }}">
-        <jbd-slide hidden?="{{ slide.id !== currentSlide }}" faded?="{{ ((currentSlide +1) === slide.id) || ((currentSlide -1 ) === slide.id)}}">
-          <h2>{{slide.title}}</h2>
-          <template if="{{slide.img}}">
-            <img src="./images/{{slide.img}}">
-          </template>
-          <p>{{slide.content}}</p>
-          <paper-ripple fit></paper-ripple>
-        </jbd-slide>
+        <div>
+          <jbd-slide>
+            <h2>{{slide.title}}</h2>
+            <template if="{{slide.img}}">
+              <img src="./images/{{slide.img}}">
+            </template>
+            <p>{{slide.content}}</p>
+             <paper-ripple fit></paper-ripple>
+          </jbd-slide>
+        </div>
       </template>
-    </div>
+    </core-pages>
 
 
     <control-bar layout horizontal center previousDisabled="{{!hasPrevious}}" nextDisabled="{{!hasNext}}" on-next="{{nextSlide}}"
