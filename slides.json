@@ -1,6 +1,13 @@
 [
   {
     "title": "Hello world",
-    "content": "Hellooooo"
+    "content": "Hellooooo",
+    "id": 0
+  },
+  {
+    "title": "Another slide",
+    "content": "Testing",
+    "img": "cat.jpg",
+    "id": 1
   }
 ]
