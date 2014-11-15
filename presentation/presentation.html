@@ -1,6 +1,8 @@
 <link rel="import" href="../bower_components/polymer/polymer.html">
 <link rel="import" href="slide.html">
 <link rel="import" href="../service/service.html">
+<link rel="import" href="control-bar.html">
+
 <polymer-element name="jbd-presentation"  attributes="location">
   <template>
     <style>
@@ -12,30 +14,35 @@
 
     <jbd-service url="{{ location }}" slides="{{ slides }}"></jbd-service>
 
-    <h1>This is a presentation at {{location}}</h1>
-    <jbd-slide>
-      <h2>This is the slide title</h2>
-      <p>This is the contents of the slide</p>
-      <img src="../images/images.jpg" alt="shizzle">
-    </jbd-slide>
+    <div class="container">
+      <template repeat="{{ slide in slides }}">
+        <jbd-slide hidden?="{{ currentSlide !== slide.id}}">
+          <h2>{{slide.title}}</h2>
+          <template if="{{slide.img}}">
+            <img src="./images/{{slide.img}}">
+          </template>
+          <p>{{slide.content}}</p>
+        </jbd-slide>
+      </template>
+    </div>
 
 
-
-
-    <template repeat="{{ slide in slides }}">
-      <div>
-
-        <h2>{{ slide.title }}</h2>
-
-      </div>
-    </template>
+    <control-bar on-next="{{nextSlide}}"
+                 on-previous="{{previousSlide}}"></control-bar>
   </template>
   <script>
   Polymer({
-
-
-
-
+    currentSlide: 0,
+    nextSlide: function (event, detail, sender){
+      if (this.currentSlide !== this.slides.length -1){
+        this.currentSlide += 1;
+      }
+    },
+    previousSlide: function () {
+      if (this.currentSlide !== 0){
+        this.currentSlide -= 1;
+      }
+    }
   });
   </script>
 </polymer-element>

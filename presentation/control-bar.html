@@ -1,5 +1,5 @@
-<link rel="import" href="../components/polymer/polymer.html">
-<link rel="import" href="../components/core-icon-button/core-icon-button.html">
+<link rel="import" href="../bower_components/polymer/polymer.html">
+<link rel="import" href="../bower_components/core-icon-button/core-icon-button.html">
 
 <polymer-element name="control-bar">
     <template>
@@ -8,7 +8,6 @@
                 display: block;
                 position:absolute;
                 background-color: lightgrey;
-                padding: 10px;
                 width: 100%;
                 opacity: 0.7;
                 font-size: 1.2rem;
@@ -20,9 +19,11 @@
             }
             #previous {
               right: 50px;
+              padding: 10px;
             }
             #next {
               right: 30px;
+              padding: 10px;
             }
         </style>
         <div>
@@ -50,6 +51,8 @@
             //load next slide
             this.fire('next');
             console.log('next slide');
+        }, ready: function () {
+          console.log('pres ready');
         }
     });
     </script>
