@@ -1,0 +1,31 @@
+<link rel="import" href="../bower_components/polymer/polymer.html">
+<link rel="import" href="../bower_components/core-ajax/core-ajax.html">
+
+<polymer-element name="jbd-service" attributes="slides url">
+  <template>
+    <style>
+
+    </style>
+
+    <core-ajax id="ajax"
+      auto
+      url="{{ url }}"
+      on-core-response="{{postsLoaded}}"
+      handleAs="json">
+    </core-ajax>
+
+  </template>
+  <script>
+  Polymer({
+    created: function() {
+      this.slides = [];
+    },
+    postsLoaded: function() {
+
+      this.slides = this.$.ajax.response.slice(0);
+
+
+    }
+  });
+  </script>
+</polymer-element>

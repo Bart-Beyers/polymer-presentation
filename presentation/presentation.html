@@ -1,4 +1,5 @@
 <link rel="import" href="../bower_components/polymer/polymer.html">
+<<<<<<< HEAD
 <link rel="import" href="slide.html">
 <polymer-element name="jbd-presentation"  attributes="location">
   <template>
@@ -8,12 +9,26 @@
     }
     </style>
 
+
+    <jbd-service url="{{ location }}" slides="{{ slides }}"></jbd-service>
+
     <h1>This is a presentation at {{location}}</h1>
     <jbd-slide>
       <h2>This is the slide title</h2>
       <p>This is the contents of the slide</p>
       <img src="../images/images.jpg" alt="shizzle">
     </jbd-slide>
+
+
+
+
+    <template repeat="{{ slide in slides }}">
+      <div>
+
+        <h2>{{ slide.title }}</h2>
+
+      </div>
+    </template>
   </template>
   <script>
   Polymer({
