@@ -3,15 +3,19 @@
   <link rel="import"
       href="../bower_components/paper-shadow/paper-shadow.html">
 
-<polymer-element name="jbd-slide">
+<polymer-element name="jbd-slide" attributes = "faded">
   <template>
     <style>
     :host {
       position: absolute;
       top: 0;
       left: 0;
-      width: 90%;
+      width: 40%;
       margin: 5%;
+    }
+  :host([faded]) {
+      opacity: 0.15;
+      width: 30%;
     }
 
     .slide {
@@ -31,16 +35,15 @@
     }
     </style>
 
-    <paper-shadow z="1">
+    <paper-shadow z="5">
       <div>
 
-        <h1>This is a slide</h1>
+        <h1>This is a slide, i am faded {{faded}}</h1>
         <div class="slide-header" center>
           <content select="h2"></content>
         </div>
         <div class="slide" layout horizontal>
           <content select="img"></content>
-          <content select="h4"></content>
           <content></content>
         </div>
 

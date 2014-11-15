@@ -2,6 +2,7 @@
 <link rel="import" href="slide.html">
 <link rel="import" href="../service/service.html">
 <link rel="import" href="control-bar.html">
+<link rel="import" href="../bower_components/paper-ripple/paper-ripple.html">
 
 <polymer-element name="jbd-presentation"  attributes="location">
   <template>
@@ -16,18 +17,19 @@
 
     <div class="container">
       <template repeat="{{ slide in slides }}">
-        <jbd-slide hidden?="{{ currentSlide !== slide.id}}">
+        <jbd-slide hidden?="{{ slide.id !== currentSlide }}" faded?="{{ ((currentSlide +1) === slide.id) || ((currentSlide -1 ) === slide.id)}}">
           <h2>{{slide.title}}</h2>
           <template if="{{slide.img}}">
             <img src="./images/{{slide.img}}">
           </template>
           <p>{{slide.content}}</p>
+          <paper-ripple fit></paper-ripple>
         </jbd-slide>
       </template>
     </div>
 
 
-    <control-bar previousDisabled="{{!hasPrevious}}" nextDisabled="{{!hasNext}}" on-next="{{nextSlide}}"
+    <control-bar layout horizontal center previousDisabled="{{!hasPrevious}}" nextDisabled="{{!hasNext}}" on-next="{{nextSlide}}"
                  on-previous="{{previousSlide}}"></control-bar>
   </template>
   <script>

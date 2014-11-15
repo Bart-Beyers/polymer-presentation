@@ -14,6 +14,13 @@
   {
     "title": "Hello world2",
     "content": "Hellooooo2",
+    "list": [
+      ],
     "id": 2
+  },
+  {
+    "title": "slide with list",
+    "content": "<ul><li>I am a list item</li><li>Another one</li></ul>",
+    "id": 3
   }
 ]
